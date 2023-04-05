@@ -9,6 +9,12 @@
     <script src="../static/scripts/navbar.js" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+      function handleSubmit(){
+        event.preventDefault();
+        window.location.assign("admin.html");
+      }
+    </script>
   </head>
   <body>
     <img src="../static/images/bgvector1.png" id="bgimg">
@@ -33,7 +39,7 @@
   </nav>
   <div class="row">
     <div class="container">
-      <form action="#">
+      <form action="#" onsubmit="handleSubmit()">
         <div class="title">Admin Login</div>
         
         <div class="input-box">
