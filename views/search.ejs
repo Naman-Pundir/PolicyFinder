@@ -5,13 +5,14 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="..\static\styles\navbar.css">
-        <link rel = "stylesheet" href="..\static/styles/userHome.css">
+        <link rel = "stylesheet" href="..\static/styles/search.css">
         <script src="../static/scripts/navbar.js" defer></script>
         <title>Grievance Portal</title>
-        <script src="../static/scripts/admin.js" defer></script>
+        <script src="../static/scripts/home.js" defer></script>
     </head>
 
     <body>
+
         <nav class="navbar">
             <div class="logo">
                 <img src="..\static/images/Logo.png">
@@ -24,9 +25,11 @@
             </a>
             <div class="navbar-links">
                 <ul>
+                    <li><a href="userHomeCenter">Home</a></li>
                     <li><a href="about_us">About Us</a></li>
                     <li><a href="support">Support</a></li>
                     <li><a href="index">Logout</a></li>
+                    <li><a href="notification">Notifications</a></li>
                 </ul>
             </div>
         </nav>
@@ -37,21 +40,25 @@
                     <p>We will take your grievance to the desk of concerned officer and see it resolved.</p>
                     <button type="button" class="learnMore">Learn More</button>
                 </div> -->
-                <a href="admin"><div class="box2">Add a new policy</div></a>
-                <a href="adminDel"><div class="box3">Delete policy</div></a>
+                <!-- <a href="userHomeCenter"><div class="box2">Central Policies</div></a>
+                <a href="userHomeState"><div class="box3">State Policies</div></a> -->
             </div>
             <div class="container">
                 <div class="title1">Enter Details</div>
-                <form action="#">
+                <form onsubmit="showResults()">
                     <div class="input-box">
                         <div class="col1">
                             <div class="space2"><br><br><br></div>
-                            <h4>Policy ID</h4>
-                            <input type="text" name="policy_id" placeholder="Enter policy id to be deleted" required>
+                            <h4>Income</h4>
+                            <input type="text" name="income" placeholder="Enter your yearly income" required>
                             <div class="space"></div>
-                            <input type="submit" name="delete" id="register" value="Submit">
+                            <h4>Occupation</h4>
+                            <input type="text" name="occupation" placeholder="Enter your occupation" required>
+                            <div class="space"></div>
+                            <h4>Region</h4>
+                            <input type="text" name="region" placeholder="Central/State_name" required>
                         </div>
-                        <!-- <div class="col2">
+                        <div class="col2">
                             <h4>Caste</h4>
                             <input type="text" name="Caste" placeholder="Enter your caste" required>
                             <div class="innerRow">
@@ -70,12 +77,27 @@
                             </div>  
                             <div class="space"></div>
                             <h4>Policy Category</h4>
-                            <input type="number" name="mobile" placeholder="Enter Policy Category" required>
+                            <input type="number" name="category" placeholder="Enter Policy Category" required>
                             <div class="space"></div>
                             <input type="submit" name="register" id="register" value="Submit">
-                        </div> -->
+                        </div>
                     </div>
                 </form>
+            </div>
+            <div class="col3">
+                <h4>RESULTS</h4>
+                <div class="content">
+                    <div class="toprow">
+                        <div class="space"></div>
+                        <p>Policy Name</p>
+                        <div class="space">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                        <p>Region</p>
+                        <div class="bigspace2"></div>
+                        <p>Policy Category</p>
+                        <div class="bigspace">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                        <p>Visit</p> 
+                    </div>
+                </div>
             </div>
         </div>
     </body>

@@ -7,6 +7,11 @@
         <link rel="stylesheet" href="../static/styles/navbar.css">
         <link rel = "stylesheet" href="../static/styles/index.css">
         <script src="../static/scripts/navbar.js" defer></script>
+        <script>
+            function clicked(){
+                window.location.assign("support");
+            }
+        </script>
         <title>Grievance Portal</title>
     </head>
 
@@ -23,10 +28,10 @@
             </a>
             <div class="navbar-links">
                 <ul>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Support</a></li>
+                    <li><a href="about_us">About Us</a></li>
+                    <li><a href="support">Support</a></li>
                     <li><a href="userLogin">User Login</a></li>
-                    <!-- <li><a href="officerlogin.html">Admin Login</a></li> -->
+                    <li><a href="officerlogin">Admin Login</a></li>
                 </ul>
             </div>
         </nav>
@@ -34,7 +39,7 @@
             <div class="col1">
             <H1>All government policies you need <br> In One Place.</H1>
             <p>Use this platform to filter out the perfect government policy/scheme to fit your needs.</p>
-            <button type="button" class="learnMore">Learn More</button>
+            <button type="button" class="learnMore" onclick="clicked()">Learn More</button>
             </div>
             <div class="col2">
                 <h4>GET STARTED</h4>

@@ -14,7 +14,7 @@ var formatted = dt.format('Y-m-d H:M:S');
 console.log(formatted);
   
 
-module.exports = function (con, name, password, qualification, occupassion, ageNumber, gender, email,family_income,caste){
+module.exports = function (con, name, password, qualification, occupassion, ageNumber, gender, email,state,family_income,caste){
     con.connect(function(err) {
         if (err) throw err;
    
@@ -33,8 +33,8 @@ module.exports = function (con, name, password, qualification, occupassion, ageN
            }});
     //    }
        
-            con.query('INSERT INTO person (person_id, age ,person_name, person_password, gender,email, last_active , occupation , qualification , income, caste) VALUES (?, ?, ?, ?, ?,?,?,?,?,?,?)',
-             [person_id,ageNumber,name,password, gender,email,formatted ,occupassion,qualification,family_income,caste],(error, 
+            con.query('INSERT INTO person (person_id, age ,person_name, person_password, gender,email,state, last_active , occupation , qualification , income, caste) VALUES (?, ?, ?, ?, ?, ?,?,?,?,?,?,?)',
+             [person_id,ageNumber,name,password, gender,email,state,formatted ,occupassion,qualification,family_income,caste],(error, 
         results) => {
             if (error)  throw error;
             });

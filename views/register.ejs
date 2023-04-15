@@ -16,6 +16,7 @@
         if(s1 != s2){
           alert("Password and Confirm Password must be same.");
           event.preventDefault();
+          return false;
         }
       }
     </script>
@@ -35,26 +36,20 @@
       <div class="navbar-links">
           <ul>
               <li><a href="index">Home</a></li>
-              <li><a href="#">About Us</a></li>
-              <li><a href="#">Support</a></li>
-              <!-- <li><a href="officerlogin.html">Admin Login</a></li> -->
+              <li><a href="about_us">About Us</a></li>
+              <li><a href="support">Support</a></li>
+              <li><a href="officerlogin">Admin Login</a></li>
           </ul>
       </div>
   </nav>
   <div class="row">
     <div class="container">
-      <form method="post"  action="register"onsubmit="checkPassword()">
+      <form method="post"  action="register">
         <div class="title"> Create Your Account</div>
         <h4>Already have accont?<a href="userLogin"> Login now</a></h4>
         <div class="input-box">
           <h4> Name</h4>
           <input type="text" name="Name" placeholder="Enter Your First Name" required>
-          <div class="space"></div>
-          <h4>Aadhar Number</h4>
-          <input type="number" name="aadharNumber" placeholder="Enter Your Aadhar Number" required>
-          <div class="space"></div>
-          <h4>Mobile number</h4>
-          <input type="number" name="mobileNumber" placeholder="Enter Your Mobile Number" required>
           <div class="space"></div>
           <div class="rowRegister">
             <div class="col1Register">
@@ -78,13 +73,29 @@
           <input type="password" name="password" placeholder="Create a new password" required>
           <div class="space"></div>
           <h4>Confirm Password</h4>
-          <input type="password" name="confirmPassword" placeholder="Retype Password" required>
+          <input type="password" name="confirmPassword" placeholder="Retype Password" onchange="checkPassword()" required>
+          <div class="space"></div>
+          <h4>Occupation</h4>
+          <input type="text" name="occupation" placeholder="Enter Your Occupation" required>
+          <div class="space"></div>
+          <h4>Qualification</h4>
+          <input type="text" name="qualification" placeholder="Enter Your qualification" required>
+          <div class="space"></div>
+          <h4>Caste</h4>
+          <input type="text" name="caste" placeholder="Enter Your Caste" required>
+          <div class="space"></div>
+          <h4>Family Income</h4>
+          <input type="number" name="income" placeholder="Enter Your Family Income" required>
+          <div class="space"></div>
+          <h4>State</h4>
+          <input type="text" name="state" placeholder="Enter Your state" required>
           <div class="space"></div>
           <input type="submit" name="register" id="register" value="Register">
           <div class="space"></div>
           <div class="space"></div>
         </div>
       </form>
+      
         <!-- <div class="option"> <u>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</u>Or<u>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</u></div>
         <div class="mobile">
           <a href="#"><i class="fab fa-mobile"></i>Continue with mobile number</a>

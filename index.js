@@ -16,8 +16,8 @@ var email;
 var con = mysql.createConnection({
     host : "localhost",
     user : "root",
-   password : "tanish@0601",
-    database  : "policy"
+   password : "India@no.1",
+    database  : "policyfinder"
 });
 app.use(express.json());
 app.set("view engine","ejs");
@@ -53,7 +53,7 @@ app.get("/userHomeCenter", (req,res)=>{
                 con.query("SELECT * from center_policy", function(err, result2, fields){
                     if(err) throw err;
                     console.log(result2);
-                    res.render("userHomeState",{result2,result});
+                    res.render("userHomeCenter",{result2,result});
                 })
             })
         })
@@ -86,20 +86,57 @@ app.get("/userHomeState", (req,res)=>{
 app.get("/index",(req,res)=>{
     res.render("index.ejs");
 })
+app.get("/about_us",(req,res)=>{
+    res.render("about_us.ejs");
+})
+app.get("/support",(req,res)=>{
+    res.render("support.ejs");
+})
+app.get("/notification",(req,res)=>{
+    res.render("notification.ejs");
+})
+app.get("/officerlogin",(req,res)=>{
+    res.render("officerlogin.ejs");
+})
+app.get("/admin",(req,res)=>{
+    res.render("admin.ejs");
+})
+app.get("/adminDel",(req,res)=>{
+    res.render("adminDel.ejs");
+})
+app.get("/search",(req,res)=>{
+    con.connect(function(err){
+        if(err){
+            console.log("PROBLEM");
+            throw err;
+        }
+        con.query("SELECT * from center_policy ",function(err, result, fields){
+            if(err) throw err;
+            con.query("SELECT * from state_policy", function(err, result2, fields){
+                if(err) throw err;
+                console.log(result2);
+                res.render("search.ejs",{result2,result});
+            })
+        })
+    })
+
+
+})
 
 
 app.post("/register",(req,res)=>{
 
     var name = req.body.Name;
     var password = req.body.password;
-  var qualification ="matric"
+    var qualification =req.body.qualification;
     var ageNumber= req.body.ageNumber;
     var gender = req.body.gender;
     var email = req.body.email;
-    var occupassion = "student";
-    var caste = "General";
-    var family_income = "10000";
-    inputs(con, name, password, qualification, occupassion, ageNumber, gender, email,family_income,caste)
+    var state = req.body.state;
+    var occupassion = req.body.occupation;
+    var caste = req.body.caste;
+    var family_income = req.body.income;
+    inputs(con, name, password, qualification, occupassion, ageNumber, gender, email,state,family_income,caste)
     res.render("userlogin");
  });
 

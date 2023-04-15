@@ -5,10 +5,10 @@ document.addEventListener("DOMContentLoaded", temp());
             
 function temp(){
     // console.log(path);
-    if(path == "/views/admin.html"){
+    if(path == "/adminDel"){
     // console.log("Function running");
-        a.classList.add('active');
-    }else{
         b.classList.add('active');
+    }else{
+        a.classList.add('active');
     }
 }
