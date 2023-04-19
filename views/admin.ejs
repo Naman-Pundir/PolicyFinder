@@ -42,7 +42,7 @@
             </div>
             <div class="container">
                 <div class="title1">Enter Details</div>
-                <form action="#">
+                <form action="policy_add" method="post">
                     <div class="input-box">
                         <div class="col1">
                             <div class="space2"><br><br><br></div>
@@ -50,13 +50,16 @@
                             <input type="text" name="name" placeholder="Enter policy name" required>
                             <div class="space"></div>
                             <h4>State</h4>
-                            <input type="text" name="state" placeholder="Enter State" disabled>
+                            <input type="text" name="state" placeholder="Enter State">
                             <div class="space"></div>
                             <h4>Income</h4>
                             <input type="text" name="income" placeholder="Enter your yearly income" required>
                             <div class="space"></div>
                             <h4>Occupation</h4>
                             <input type="text" name="occupation" placeholder="Enter your occupation" required>
+                            <div class="space"></div>
+                            <h4>Details</h4>
+                            <input type="text" name="details" placeholder="Enter policy details" required>
                         </div>
                         <div class="col2">
                             <h4>Region</h4>
@@ -66,7 +69,7 @@
                             </select>
                             <div class="space"></div>
                             <h4>Caste</h4>
-                            <input type="text" name="Caste" placeholder="Enter your caste" required>
+                            <input type="text" name="caste" placeholder="Enter your caste" required>
                             <div class="innerRow">
                                 <div class="innercol1">
                                     <h4>Age</h4>
@@ -83,7 +86,13 @@
                             </div>  
                             <div class="space"></div>
                             <h4>Policy Category</h4>
-                            <input type="number" name="mobile" placeholder="Enter Policy Category" required>
+                            <input type="text" name="policy_category" placeholder="Enter Policy Category" required>
+                            <div class="space"></div>
+                            <h4>Qualification</h4>
+                            <input type="text" name="qualification" placeholder="Enter policy qualification" required>
+                            <div class="space"></div>
+                            <h4>Link</h4>
+                            <input type="text" name="link" placeholder="Enter policy link" required>
                             <div class="space"></div>
                             <input type="submit" name="register" id="register" value="Submit">
                         </div>

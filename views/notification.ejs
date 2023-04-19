@@ -31,11 +31,25 @@
             </div>
         </nav>
         <div class="row">
-            <div class="col1">
-            <H1>A new policy have arrived for you.</H1>
-            <p>Policy Name Here <br></p><p>To check out more about this policy click on the button below</p>
-            <button type="button" class="learnMore">Visit</button>
-            </div>
+            <% for(var i = 0; i<result.length; i++){
+                if(result[i].date_added.toString() > result4[0].last_active.toString()){%>
+                        <div class="col1">
+                        <H1>A new policy have arrived for you.</H1>
+                        <p><%= result[i].policy_name %> <br></p><p><%= result[i].details%></p>
+                        <a href="<%= result[i].policy_link%>"><button type="button" class="learnMore">Visit</button></a>
+                        </div>
+                <% }
+            }%>
+            <% for(var i = 0; i<result2.length; i++){
+                if(result2[i].date_added.toString() > result4[0].last_active.toString()){%>
+                        <div class="col1">
+                        <H1>A new policy have arrived for you.</H1>
+                        <p><%= result2[i].policy_name %> <br></p><p><%= result2[i].details%></p>
+                        <a href="<%= result2[i].policy_link%>"><button type="button" class="learnMore">Visit</button></a>
+                        </div>
+                <% }
+            }%>
+            
         </div>
     </body>
 </html>

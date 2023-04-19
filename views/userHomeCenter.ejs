@@ -25,7 +25,7 @@
             </a>
             <div class="navbar-links">
                 <ul>
-                    <li><a href="search">Search</a></li>
+                    <!-- <li><a href="search">Search</a></li> -->
                     <li><a href="about_us">About Us</a></li>
                     <li><a href="support">Support</a></li>
                     <li><a href="index">Logout</a></li>
@@ -103,7 +103,7 @@
                         &&  (result2[i].occupation =="none" || result2[i].occupation === result[0].occupation)
                         &&  (result2[i].qualification == "none" || result2[i].qualification === result[0].qualification)
                         &&  (result2[i].gender == "none" || result2[i].gender === result[0].gender)
-                        &&  (result2[i].age == "none" || result2[i].age >= result[0].age)){ %>
+                        &&  (result2[i].age == "none" || result2[i].age <= result[0].age)){ %>
                             <div class="data">
                                 <div class="space2"></div>
                                 <p id="PolicyName"><%= result2[i].policy_name %></p>
@@ -112,7 +112,7 @@
                                 <div class="bigspace2"></div>
                                 <p id="policyCategory"><%= result2[i].policy_category %></p>
                                 <div class="bigspace"></div><div class="space"></div>
-                                <a href = "#"><img src="../static/images/visit.png"></a>
+                                <a href = "<%= result2[i].policy_link%>"><img src="../static/images/visit.png"></a>
                                 <div class="space"></div>
                             </div>                             
                         <% }

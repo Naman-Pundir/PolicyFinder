@@ -96,23 +96,26 @@
                         <p>Visit</p>
                         
                     </div>
-                    <% for(var i = 0; i<result2.length; i++){
+                    <% 
+                        for(var i = 0; i<result2.length; i++){
+
                         if((result2[i].income == "none" || result2[i].income === result[0].income)
                         &&  (result2[i].occupation =="none" || result2[i].occupation === result[0].occupation)
                         &&  (result2[i].qualification == "none" || result2[i].qualification === result[0].qualification)
                         &&  (result2[i].gender == "none" || result2[i].gender === result[0].gender)
-                        &&  (result2[i].state === result[0].state)){ %>
+                        &&  (result2[i].age == "none" || result2[i].age <= result[0].age)
+                        &&  (result2[i].state == result[0].state)){ %>
                             <div class="data">
                                 <div class="space2"></div>
                                 <p id="PolicyName"><%= result2[i].policy_name %></p>
                                 <div class="space">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div><div class="space"></div>
-                                <p><%= result2[i].state %></p>
+                                <p><%= result[0].state%></p>
                                 <div class="bigspace2"></div>
                                 <p id="policyCategory"><%= result2[i].policy_category %></p>
                                 <div class="bigspace"></div><div class="space"></div>
-                                <a href = "#"><img src="../static/images/visit.png"></a>
+                                <a href = "<%= result2[i].policy_link%>"><img src="../static/images/visit.png"></a>
                                 <div class="space"></div>
-                            </div> 
+                            </div>                             
                         <% }
                     } %>   
                 </div>
