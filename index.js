@@ -230,6 +230,7 @@ var formatted = dt.format('Y-m-d H:M:S');
 
     if(region==="Center"){
         var policy_id = Math.random()*10000;
+        var p_id = policy_id.toString();
         con.connect(function(err){
             if(err){
                 console.log("PROBLEM");
@@ -259,6 +260,40 @@ var formatted = dt.format('Y-m-d H:M:S');
     }
     res.render("admin");
  })
+
+ 
+ app.post("/delete_policy",(req,res)=>{
+
+var policy_id = req.body.policy_id
+// var policy_id = "2005.8096130017077";
+
+
+var region = req.body.region;
+// var region = "Center";
+
+
+if(region==="Center"){
+con.query("delete from center_policy where policy_id = (?)",[policy_id],function(err,result,fields){
+
+    if(err)
+    throw err;
+    console.log("policy deleted");
+});
+
+
+}
+else{
+    con.query("delete from state_policy where state_policy_id = (?)",[policy_id], function(err,result,fields){
+        if(err) throw err;
+        console.log("policy deleted");
+    });
+
+}
+
+    res.render("adminDel");
+ })
+
+ 
 
 app.listen(port,()=>{
     console.log(`successfully port connected`);

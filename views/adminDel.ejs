@@ -42,10 +42,16 @@
             </div>
             <div class="container">
                 <div class="title1">Enter Details</div>
-                <form action="#">
+                <form action="delete_policy" method="post">
                     <div class="input-box">
                         <div class="col1">
                             <div class="space2"><br><br><br></div>
+                            <h4>Region</h4>
+                            <select name="region">
+                                <option value="Center">Center</option>
+                                <option value="State">State</option>
+                            </select>
+                            <div class="space2"></div>
                             <h4>Policy ID</h4>
                             <input type="text" name="policy_id" placeholder="Enter policy id to be deleted" required>
                             <div class="space"></div>
