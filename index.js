@@ -18,8 +18,8 @@ var last_date;
 var con = mysql.createConnection({
     host : "localhost",
     user : "root",
-   password : "India@no.1",
-    database  : "policyfinder"
+   password : "MySQL@123",
+    database  : "policy"
 });
 app.use(express.json());
 app.set("view engine","ejs");
@@ -36,6 +36,7 @@ app.get("/userLogin",(req,res)=>{
 app.get("/officerlogin",(req,res)=>{
     res.render("officerLogin.ejs");
 })
+
 app.get("/register",(req,res)=>{
     res.render("register.ejs");
 })
@@ -209,6 +210,26 @@ app.post("/register",(req,res)=>{
   
  })
 
+ app.post("/adminlogin", (req, res)=>{
+    var admin_email = req.body.adminemail;
+    var passwd = req.body.password;
+    console.log(admin_email);
+
+    con.query("SELECT * from admin where email = (?)", [admin_email], function(err, result, fields){
+        if(err) throw err;
+        else{
+            console.log(result);
+            var temp = result[0].pass;
+            if(passwd==temp){
+                res.render("admin");
+            }
+            else{
+                console.log("Incorrect Password");
+                res.render("officerlogin");
+            }
+        }
+    })
+ })
 
  app.post("/policy_add",(req,res)=>{
 
