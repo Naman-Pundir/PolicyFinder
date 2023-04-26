@@ -88,7 +88,11 @@
           <input type="number" name="income" placeholder="Enter Your Family Income" required>
           <div class="space"></div>
           <h4>State</h4>
-          <input type="text" name="state" placeholder="Enter Your state" required>
+          <select name="state">
+            <% for(var i = 0; i<result.length; i++){ %>
+              <option value="result[i].state"><%= result[i].state %></option>
+            <% } %>
+          </select>
           <div class="space"></div>
           <input type="submit" name="register" id="register" value="Register">
           <div class="space"></div>

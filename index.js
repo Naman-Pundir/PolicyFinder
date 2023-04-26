@@ -37,7 +37,10 @@ app.get("/officerlogin",(req,res)=>{
     res.render("officerLogin.ejs");
 })
 app.get("/register",(req,res)=>{
-    res.render("register.ejs");
+    con.query("SELECT * from state", function(err, result, fields){
+        res.render("register.ejs",{result});
+    })
+    
 })
 app.get("/userHome",(req,res)=>{
     res.render("userHome.ejs");
