@@ -84,6 +84,25 @@ body{
     display: block;
 }
 
+.navbar button{
+    margin-top: 1.23rem;
+    margin-right: 1.5rem;
+    height: 2rem;
+    width: 10rem;
+    color: #FB724B;
+    background-color: white;
+    border: 1.33333px solid #FB724B;
+    border-radius: 4px;
+    transition: 0.3s ease-out;
+    font-size: 1.2rem;
+}
+
+.navbar button:hover{
+    background-image: linear-gradient(to right, #FB724B,#FE904B);
+    color: white;
+    cursor: pointer;
+}
+
 .navbar-links li a:hover{
     color: #FE904B;
 }
