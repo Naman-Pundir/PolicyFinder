@@ -42,23 +42,18 @@
                 <a href="adminView"><div class="box4">View all policies</div></a>
             </div>
             <div class="container">
-                <div class="title1">Enter Details</div>
-                <form action="delete_policy" method="post">
+                <!-- <div class="title1">Enter Details</div>
+                <form action="#">
                     <div class="input-box">
                         <div class="col1">
                             <div class="space2"><br><br><br></div>
-                            <h4>Region</h4>
-                            <select name="region">
-                                <option value="Center">Center</option>
-                                <option value="State">State</option>
-                            </select>
-                            <div class="space2"></div>
-                            <h4>Policy ID</h4>
-                            <input type="text" name="policy_id" placeholder="Enter policy id to be deleted" required>
+                            <h4>Income</h4>
+                            <input type="text" name="income" placeholder="Enter your yearly income" required>
                             <div class="space"></div>
-                            <input type="submit" name="delete" id="register" value="Submit">
+                            <h4>Occupation</h4>
+                            <input type="text" name="occupation" placeholder="Enter your occupation" required>
                         </div>
-                        <!-- <div class="col2">
+                        <div class="col2">
                             <h4>Caste</h4>
                             <input type="text" name="Caste" placeholder="Enter your caste" required>
                             <div class="innerRow">
@@ -80,9 +75,53 @@
                             <input type="number" name="mobile" placeholder="Enter Policy Category" required>
                             <div class="space"></div>
                             <input type="submit" name="register" id="register" value="Submit">
-                        </div> -->
+                        </div>
                     </div>
-                </form>
+                </form> -->
+            </div>
+            <div class="col3">
+                <h4>RESULTS</h4>
+                <div class="content">
+                    <div class="toprow">
+                        <div class="space"></div>
+                        <p>Policy ID</p>
+                        <div class="space">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                        <p>Region</p>
+                        <div class="bigspace2"></div>
+                        <p>Policy Name</p>
+                        <div class="bigspace">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                        <p>Policy Category</p>
+                        
+                    </div>
+                    
+                    <% for(var i = 0; i<result.length; i++){ %>
+                            <div class="data">
+                                <div class="space2"></div>
+                                <p id="policy_id"><%= result[i].policy_id %></p>
+                                <div class="space">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div><div class="space"></div>
+                                <p>Center</p>
+                                <div class="bigspace2"></div>
+                                <p id="policy_name"><%= result[i].policy_name%></p>
+                                <div class="bigspace"></div><div class="space"></div>
+                                <p id="policy_category"><%= result[i].policy_category %></p>
+                                <div class="space"></div>
+                            </div>                             
+                        <% } %> 
+
+                        <% for(var i = 0; i<result2.length; i++){ %>
+                            <div class="data">
+                                <div class="space2"></div>
+                                <p id="policy_id"><%= result2[i].state_policy_id %></p>
+                                <div class="space">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div><div class="space"></div>
+                                <p id="State"><%= result2[i].state %></p>
+                                <div class="bigspace2"></div>
+                                <p id="policy_name"><%= result2[i].policy_name%></p>
+                                <div class="bigspace"></div><div class="space"></div>
+                                <p id="policy_category"><%= result2[i].policy_category %></p>
+                                <div class="space"></div>
+                            </div>                             
+                        <% } %> 
+                </div>
             </div>
         </div>
     </body>

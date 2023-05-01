@@ -6,6 +6,7 @@ const port =4000;
 const hbs = require("ejs")
 const alert =  require("alert");
 var dateTime = require('node-datetime');
+const encoding = ["Under-Graduate","Graduate","Post-Graduate","Doctrate"];
 
 // const popup = require('popups');
 const inputs = require('./user')
@@ -18,8 +19,8 @@ var last_date;
 var con = mysql.createConnection({
     host : "localhost",
     user : "root",
-   password : "MySQL@123",
-    database  : "policy"
+   password : "India@no.1",
+    database  : "policyfinder"
 });
 app.use(express.json());
 app.set("view engine","ejs");
@@ -133,8 +134,22 @@ app.get("/officerlogin",(req,res)=>{
     res.render("officerlogin.ejs");
 })
 app.get("/admin",(req,res)=>{
-    res.render("admin.ejs");
+    con.query("SELECT * from state", function(err, result, fields){
+        if(err) throw err;
+        res.render("admin.ejs",{result});
+    })
 })
+
+app.get("/adminView",(req,res)=>{
+    con.query("SELECT * from center_policy", function(err, result, fields){
+        if(err) throw err;
+        con.query("SELECT * from state_policy",function(err, result2, fields){
+            if(err) throw err;
+            res.render("adminView.ejs",{result, result2});
+        })
+    })
+})
+
 app.get("/adminDel",(req,res)=>{
     res.render("adminDel.ejs");
 })
@@ -218,13 +233,16 @@ app.post("/register",(req,res)=>{
     var passwd = req.body.password;
     console.log(admin_email);
 
-    con.query("SELECT * from admin where email = (?)", [admin_email], function(err, result, fields){
+    con.query("SELECT * from admin where email = (?)", [admin_email], function(err, result2, fields){
         if(err) throw err;
         else{
-            console.log(result);
-            var temp = result[0].pass;
+            console.log(result2);
+            var temp = result2[0].pass;
             if(passwd==temp){
-                res.render("admin");
+                con.query("SELECT* from state", function(err,result,fields){
+                    res.render("admin",{result});
+                })
+                
             }
             else{
                 console.log("Incorrect Password");

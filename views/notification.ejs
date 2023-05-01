@@ -32,7 +32,7 @@
         </nav>
         <div class="row">
             <% for(var i = 0; i<result.length; i++){
-                if(result[i].date_added.toString() > result4[0].last_active.toString()){%>
+                if(result[i].date_added > result4[0].last_active){%>
                         <div class="col1">
                         <H1>A new policy have arrived for you.</H1>
                         <p><%= result[i].policy_name %> <br></p><p><%= result[i].details%></p>
@@ -41,7 +41,7 @@
                 <% }
             }%>
             <% for(var i = 0; i<result2.length; i++){
-                if(result2[i].date_added.toString() > result4[0].last_active.toString()){%>
+                if(result2[i].date_added > result4[0].last_active){%>
                         <div class="col1">
                         <H1>A new policy have arrived for you.</H1>
                         <p><%= result2[i].policy_name %> <br></p><p><%= result2[i].details%></p>

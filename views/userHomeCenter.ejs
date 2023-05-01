@@ -9,6 +9,26 @@
         <script src="../static/scripts/navbar.js" defer></script>
         <title>Grievance Portal</title>
         <script src="../static/scripts/home.js" defer></script>
+        <script>
+            var arr = <%- JSON.stringify(result2) %>;
+                function showPopup(row){
+                    var name = document.getElementById("name");
+                    var desc = document.getElementById("desc");
+                    var link = document.getElementById("link");
+                    var id = row.id;
+                    name.innerHTML = arr[id].policy_name;
+                    desc.innerHTML = arr[id].details;
+                    link.href = arr[id].policy_link;
+                    var popup = document.getElementsByClassName("popup")[0];
+                    popup.classList.add('active');
+                    //showPopup();
+                }
+
+                function closePopup(){
+                    var popup = document.getElementsByClassName("popup")[0];
+                    popup.classList.remove('active');
+                }
+        </script>
     </head>
 
     <body>
@@ -33,6 +53,7 @@
                 </ul>
             </div>
         </nav>
+        <button type="button" onclick() = openChatbot()></button>
         <div class="row">
             <div class="outer-col1">
                 <!-- <div class="box1">
@@ -81,6 +102,15 @@
                     </div>
                 </form> -->
             </div>
+            
+            <div class="popup">
+                <div class="blocker" onclick="closePopup()"></div>
+                <div class="popup_contents">
+                    <H1 id="name">Policy Name</H1>
+                    <p id="desc">Policy Description</p>
+                    <a id="link"><button type="button" class="learnMore" onclick="clicked()">Visit</button></a>
+                </div>
+            </div>
             <div class="col3">
                 <h4>RESULTS</h4>
                 <div class="content">
@@ -99,12 +129,28 @@
                     <% 
                         for(var i = 0; i<result2.length; i++){
 
-                        if((result2[i].income == "none" || result2[i].income === result[0].income)
+                            var i1 = result2[i].income.split("-");
+                            var i2 = result2[i].age.split("-");
+                            var i3 = result2[i].qualification.split("-");
+                            var i4 = result2[i].caste.split("/");
+                            function checkCaste(a){
+                                for(var i = 0; i<i4.length; i++){
+                                    if(i4[i] == "none"){
+                                        continue;
+                                    }else if(i4[i] == a){
+                                        return true;
+                                    }
+                                }
+                                return false;
+                            }
+
+                        if((result2[i].income == "none" || ((i1[0] <= result[0].income) && (i1[1] >= result[0].income)))
                         &&  (result2[i].occupation =="none" || result2[i].occupation === result[0].occupation)
-                        &&  (result2[i].qualification == "none" || result2[i].qualification === result[0].qualification)
+                        &&  (result2[i].qualification == "none" || ((i3[0]<= result[0].qualification) && (i3[1] >= result[0].qualification)))
                         &&  (result2[i].gender == "none" || result2[i].gender === result[0].gender)
-                        &&  (result2[i].age == "none" || result2[i].age <= result[0].age)){ %>
-                            <div class="data">
+                        &&  (result2[i].caste == "none" ||(checkCaste(result[0].caste)))
+                        &&  (result2[i].age == "none" || ((i2[0] <= result[0].age) && (i2[1] >= result[0].age)))){ %>
+                            <div class="data" id="<%= i %>">
                                 <div class="space2"></div>
                                 <p id="PolicyName"><%= result2[i].policy_name %></p>
                                 <div class="space">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div><div class="space"></div>
@@ -112,7 +158,7 @@
                                 <div class="bigspace2"></div>
                                 <p id="policyCategory"><%= result2[i].policy_category %></p>
                                 <div class="bigspace"></div><div class="space"></div>
-                                <a href = "<%= result2[i].policy_link%>"><img src="../static/images/visit.png"></a>
+                                <a onclick="showPopup(this.parentNode)"><img src="../static/images/visit.png"></a>
                                 <div class="space"></div>
                             </div>                             
                         <% }

@@ -1,5 +1,6 @@
 var a = document.getElementsByClassName("box2")[0];
 var b = document.getElementsByClassName("box3")[0];
+var c = document.getElementsByClassName("box4")[0];
 var path = window.location.pathname;
 document.addEventListener("DOMContentLoaded", temp());
             
@@ -8,7 +9,9 @@ function temp(){
     if(path == "/adminDel"){
     // console.log("Function running");
         b.classList.add('active');
-    }else{
+    }else if(path == "/admin" || path == "/adminlogin"){
         a.classList.add('active');
+    }else{
+        c.classList.add('active');
     }
 }

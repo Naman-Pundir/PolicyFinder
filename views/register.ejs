@@ -79,10 +79,31 @@
           <input type="text" name="occupation" placeholder="Enter Your Occupation" required>
           <div class="space"></div>
           <h4>Qualification</h4>
-          <input type="text" name="qualification" placeholder="Enter Your qualification" required>
+          <select name="qualification">
+            <% for(var i = 1; i<13 ; i++ ){ 
+                if(i == 1){ %>
+                  <option value="<%= i %>"><%= i%>st</option>
+                <% }else if(i == 2){ %>
+                  <option value="<%= i %>"><%= i%>nd</option>
+                <% }else if(i==3){ %>
+                  <option value="<%= i %>"><%= i%>rd</option>
+                <% }else{ %>
+                  <option value="<%= i %>"><%= i%>th</option>
+                <% }              
+             } %>
+             <option value="13">Under-Graduate</option>
+             <option value="14">Graduate</option>
+             <option value="15">Post-Graduate</option>
+             <option value="16">Doctrate</option>
+          </select>
           <div class="space"></div>
           <h4>Caste</h4>
-          <input type="text" name="caste" placeholder="Enter Your Caste" required>
+          <select name="caste">
+            <option value="gen">General</option>
+            <option value="sc">SC</option>
+            <option value="st">ST</option>
+            <option value="obc">OBC</option>
+          </select>
           <div class="space"></div>
           <h4>Family Income</h4>
           <input type="number" name="income" placeholder="Enter Your Family Income" required>
@@ -90,7 +111,7 @@
           <h4>State</h4>
           <select name="state">
             <% for(var i = 0; i<result.length; i++){ %>
-              <option value="result[i].state"><%= result[i].state %></option>
+              <option value="<%= result[i].state %>"><%= result[i].state %></option>
             <% } %>
           </select>
           <div class="space"></div>
