@@ -50,6 +50,8 @@
                     <li><a href="support">Support</a></li>
                     <li><a href="index">Logout</a></li>
                     <li><a href="notification">Notifications</a></li>
+                    <button id="chatbot-button">Chat with us</button>
+
                 </ul>
             </div>
         </nav>
@@ -62,7 +64,7 @@
                     <button type="button" class="learnMore">Learn More</button>
                 </div> -->
                 <a href="userHomeCenter"><div class="box2">Central Policies</div></a>
-                <a href="userHomeState"><div class="box3">State Policies</div></a>
+                <a href="userHomeState.html"><div class="box3">State Policies</div></a>
             </div>
             <div class="container">
                 <!-- <div class="title1">Enter Details</div>
@@ -101,7 +103,18 @@
                         </div>
                     </div>
                 </form> -->
+
+
+
             </div>
+            <div id="chat" class="chatbot_window">
+                <div id="messages"></div>
+                <form id="message-form">
+                  <input type="text" id="message-input" placeholder="Type your message...">
+                  <button type="submit">Send</button>
+                </form>
+              </div>
+              <script src="../static/scripts/script.js"></script>
             
             <div class="popup">
                 <div class="blocker" onclick="closePopup()"></div>
@@ -165,6 +178,7 @@
                     } %> 
                 </div>
             </div>
+            
         </div>
     </body>
 </html>
