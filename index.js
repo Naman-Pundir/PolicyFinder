@@ -50,8 +50,8 @@ var last_date;
 var con = mysql.createConnection({
     host : "localhost",
     user : "root",
-   password : "India@no.1",
-    database  : "policyFinder"
+   password : "MySQL@123",
+    database  : "policy"
 });
 app.use(express.json());
 app.set("view engine","ejs");
