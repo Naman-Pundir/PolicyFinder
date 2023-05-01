@@ -4,11 +4,11 @@ var path = window.location.pathname;
 document.addEventListener("DOMContentLoaded", temp());
             
 function temp(){
-    // console.log(path);
-    if(path == "/views/userHomeCenter.html"){
-    // console.log("Function running");
-    a.classList.add('active');
+    console.log(path);
+    if(path == "/userHomeState"){
+    console.log("Function running");
+    b.classList.add('active');
     }else{
-        b.classList.add('active');
+        a.classList.add('active');
     }
 }
