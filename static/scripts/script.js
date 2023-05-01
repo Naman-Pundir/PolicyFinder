@@ -5,6 +5,11 @@ chatbotButton.addEventListener('click', () => {
   chat.style.display = 'block';
   // Add code to initialize your chatbot inside the chatbotWindow
 });
+const ch = document.getElementById('cancel');
+ch.addEventListener('click', () => {
+  chat.style.display = 'none';
+  // Add code to initialize your chatbot inside the chatbotWindow
+});
 
 
 
