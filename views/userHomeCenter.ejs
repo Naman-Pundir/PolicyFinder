@@ -30,6 +30,8 @@
                     <li><a href="support">Support</a></li>
                     <li><a href="index">Logout</a></li>
                     <li><a href="notification">Notifications</a></li>
+                    <button id="chatbot-button">Chat with us</button>
+
                 </ul>
             </div>
         </nav>
@@ -80,7 +82,18 @@
                         </div>
                     </div>
                 </form> -->
+
+
+
             </div>
+            <div id="chat" class="chatbot_window">
+                <div id="messages"></div>
+                <form id="message-form">
+                  <input type="text" id="message-input" placeholder="Type your message...">
+                  <button type="submit">Send</button>
+                </form>
+              </div>
+              <script src="../static/scripts/script.js"></script>
             <div class="col3">
                 <h4>RESULTS</h4>
                 <div class="content">
@@ -119,6 +132,7 @@
                     } %> 
                 </div>
             </div>
+            
         </div>
     </body>
 </html>

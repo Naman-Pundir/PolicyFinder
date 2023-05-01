@@ -1,0 +1,415 @@
+{
+  "settings": {
+    "languages": [
+      "en"
+    ],
+    "tag": "nlp",
+    "threshold": 0.5,
+    "autoLoad": true,
+    "autoSave": true,
+    "modelFileName": "model.nlp",
+    "executeActionsBeforeAnswers": false,
+    "calculateSentiment": true
+  },
+  "nluManager": {
+    "settings": {
+      "tag": "nlu-manager"
+    },
+    "locales": [
+      "en"
+    ],
+    "languageNames": {},
+    "domainManagers": {
+      "en": {
+        "settings": {
+          "locale": "en",
+          "trainByDomain": false,
+          "tag": "domain-manager-en",
+          "nluByDomain": {
+            "default": {
+              "className": "NeuralNlu",
+              "settings": {}
+            }
+          },
+          "useStemDict": true
+        },
+        "stemDict": {
+          "goodby": {
+            "intent": "greetings.bye",
+            "domain": "default"
+          },
+          "bye,care,take": {
+            "intent": "greetings.bye",
+            "domain": "default"
+          },
+          "later,see,you": {
+            "intent": "greetings.bye",
+            "domain": "default"
+          },
+          "bye,for,now": {
+            "intent": "greetings.bye",
+            "domain": "default"
+          },
+          "go,i,must": {
+            "intent": "greetings.bye",
+            "domain": "default"
+          },
+          "appli,can,for,how,i,this": {
+            "intent": "policy.ques",
+            "domain": "default"
+          },
+          "appli": {
+            "intent": "policy.ques",
+            "domain": "default"
+          },
+          "regist": {
+            "intent": "policy.ques",
+            "domain": "default"
+          },
+          "can,for,how,i,regist,this": {
+            "intent": "policy.ques",
+            "domain": "default"
+          }
+        },
+        "intentDict": {
+          "greetings.bye": "default",
+          "policy.ques": "default"
+        },
+        "sentences": [
+          {
+            "domain": "default",
+            "utterance": "goodbye",
+            "intent": "greetings.bye"
+          },
+          {
+            "domain": "default",
+            "utterance": "bye take care",
+            "intent": "greetings.bye"
+          },
+          {
+            "domain": "default",
+            "utterance": "see you later",
+            "intent": "greetings.bye"
+          },
+          {
+            "domain": "default",
+            "utterance": "bye for now",
+            "intent": "greetings.bye"
+          },
+          {
+            "domain": "default",
+            "utterance": "i must go",
+            "intent": "greetings.bye"
+          },
+          {
+            "domain": "default",
+            "utterance": "How can I apply for this",
+            "intent": "policy.ques"
+          },
+          {
+            "domain": "default",
+            "utterance": "apply",
+            "intent": "policy.ques"
+          },
+          {
+            "domain": "default",
+            "utterance": "register",
+            "intent": "policy.ques"
+          },
+          {
+            "domain": "default",
+            "utterance": "How can I register for this",
+            "intent": "policy.ques"
+          }
+        ],
+        "domains": {
+          "master_domain": {
+            "settings": {
+              "locale": "en",
+              "tag": "nlu-en",
+              "keepStopwords": true,
+              "nonefeatureValue": 1,
+              "nonedeltaMultiplier": 1.2,
+              "spellCheck": false,
+              "spellCheckDistance": 1,
+              "filterZeros": true,
+              "log": true
+            },
+            "features": {
+              "goodby": 1,
+              "bye": 1,
+              "take": 1,
+              "care": 1,
+              "see": 1,
+              "you": 1,
+              "later": 1,
+              "for": 1,
+              "now": 1,
+              "i": 1,
+              "must": 1,
+              "go": 1,
+              "how": 1,
+              "can": 1,
+              "appli": 1,
+              "this": 1,
+              "regist": 1
+            },
+            "intents": {
+              "greetings.bye": 1,
+              "policy.ques": 1
+            },
+            "intentFeatures": {
+              "greetings.bye": {
+                "goodby": 1,
+                "bye": 1,
+                "take": 1,
+                "care": 1,
+                "see": 1,
+                "you": 1,
+                "later": 1,
+                "for": 1,
+                "now": 1,
+                "i": 1,
+                "must": 1,
+                "go": 1
+              },
+              "policy.ques": {
+                "how": 1,
+                "can": 1,
+                "i": 1,
+                "appli": 1,
+                "for": 1,
+                "this": 1,
+                "regist": 1
+              }
+            },
+            "featuresToIntent": {
+              "goodby": [
+                "greetings.bye"
+              ],
+              "bye": [
+                "greetings.bye"
+              ],
+              "take": [
+                "greetings.bye"
+              ],
+              "care": [
+                "greetings.bye"
+              ],
+              "see": [
+                "greetings.bye"
+              ],
+              "you": [
+                "greetings.bye"
+              ],
+              "later": [
+                "greetings.bye"
+              ],
+              "for": [
+                "greetings.bye",
+                "policy.ques"
+              ],
+              "now": [
+                "greetings.bye"
+              ],
+              "i": [
+                "greetings.bye",
+                "policy.ques"
+              ],
+              "must": [
+                "greetings.bye"
+              ],
+              "go": [
+                "greetings.bye"
+              ],
+              "how": [
+                "policy.ques"
+              ],
+              "can": [
+                "policy.ques"
+              ],
+              "appli": [
+                "policy.ques"
+              ],
+              "this": [
+                "policy.ques"
+              ],
+              "regist": [
+                "policy.ques"
+              ]
+            },
+            "neuralNetwork": {
+              "settings": {
+                "locale": "en",
+                "tag": "nlu-en",
+                "keepStopwords": true,
+                "nonefeatureValue": 1,
+                "nonedeltaMultiplier": 1.2,
+                "spellCheck": false,
+                "spellCheckDistance": 1,
+                "filterZeros": true,
+                "log": true
+              },
+              "features": [
+                "goodby",
+                "bye",
+                "take",
+                "care",
+                "see",
+                "you",
+                "later",
+                "for",
+                "now",
+                "i",
+                "must",
+                "go",
+                "how",
+                "can",
+                "appli",
+                "this",
+                "regist"
+              ],
+              "intents": [
+                "greetings.bye",
+                "policy.ques"
+              ],
+              "perceptrons": [
+                [
+                  8.924290657043457,
+                  4.995907306671143,
+                  2.0479609966278076,
+                  2.0479609966278076,
+                  3.030365228652954,
+                  3.030365228652954,
+                  3.030365228652954,
+                  1.1475499868392944,
+                  2.947819709777832,
+                  1.830119013786316,
+                  3.6303884983062744,
+                  3.6303884983062744,
+                  -1.769642949104309,
+                  -1.769642949104309,
+                  -5.118062496185303,
+                  -1.769642949104309,
+                  -5.092108249664307,
+                  5.185756524966709
+                ],
+                [
+                  -4.341853618621826,
+                  -2.4719533920288086,
+                  -1.0294585227966309,
+                  -1.0294585227966309,
+                  -1.5100274085998535,
+                  -1.5100274085998535,
+                  -1.5100274085998535,
+                  -0.772438108921051,
+                  -1.4386247396469116,
+                  -1.0720977783203125,
+                  -1.74185049533844,
+                  -1.74185049533844,
+                  0.6700564622879028,
+                  0.6700564622879028,
+                  9.599939346313477,
+                  0.6700564622879028,
+                  9.5791015625,
+                  4.551229129720703
+                ]
+              ]
+            }
+          }
+        }
+      }
+    },
+    "intentDomains": {},
+    "extraSentences": [
+      [
+        "en",
+        "goodbye"
+      ],
+      [
+        "en",
+        "bye take care"
+      ],
+      [
+        "en",
+        "see you later"
+      ],
+      [
+        "en",
+        "bye for now"
+      ],
+      [
+        "en",
+        "i must go"
+      ],
+      [
+        "en",
+        "How can I apply for this"
+      ],
+      [
+        "en",
+        "apply"
+      ],
+      [
+        "en",
+        "register"
+      ],
+      [
+        "en",
+        "How can I register for this"
+      ]
+    ]
+  },
+  "ner": {
+    "settings": {
+      "tag": "ner",
+      "entityPreffix": "%",
+      "entitySuffix": "%"
+    },
+    "rules": {}
+  },
+  "nlgManager": {
+    "settings": {
+      "tag": "nlg-manager"
+    },
+    "responses": {
+      "en": {
+        "greetings.bye": [
+          {
+            "answer": "see you soon!"
+          },
+          {
+            "answer": "Till next time"
+          },
+          {
+            "answer": "bye bye"
+          },
+          {
+            "answer": "have a great day"
+          }
+        ],
+        "policy.ques": [
+          {
+            "answer": "There is a link when you view the policy "
+          },
+          {
+            "answer": "you can register from official government website"
+          },
+          {
+            "answer": "ou can apply from official government website"
+          },
+          {
+            "answer": "tap on view button then go to link of website"
+          }
+        ]
+      }
+    }
+  },
+  "actionManager": {
+    "settings": {
+      "tag": "action-manager"
+    },
+    "actions": {}
+  },
+  "slotManager": {}
+}
