@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="..\static\styles\navbar.css">
         <link rel = "stylesheet" href="..\static/styles/userHome.css">
         <script src="../static/scripts/navbar.js" defer></script>
-        <title>Grievance Portal</title>
+        <title>Policy Finder</title>
         <script src="../static/scripts/home.js" defer></script>
         <script>
             var arr = <%- JSON.stringify(result2) %>;
@@ -51,7 +51,7 @@
                     <li><a href="index">Logout</a></li>
                     <li><a href="notification">Notifications</a></li>
                     
-                    <button id="chatbot-button">Chat with us</button>
+                    <!-- <button id="chatbot-button">Chat with us</button> -->
                 </ul>
             </div>
         </nav>
@@ -64,9 +64,10 @@
                     <button type="button" class="learnMore">Learn More</button>
                 </div> -->
                 <a href="userHomeCenter"><div class="box2">Central Policies</div></a>
-                <a href="userHomeState.html"><div class="box3">State Policies</div></a>
+                <a href="userHomeState"><div class="box3">State Policies</div></a>
             </div>
             <div class="container">
+                <button id="chatbot-button">Help</button>
                 <!-- <div class="title1">Enter Details</div>
                 <form action="#">
                     <div class="input-box">
@@ -108,11 +109,12 @@
 
             </div>
             <div id="chat" class="chatbot_window">
+                <div class="blocker2" id="cancel"></div>
                 <div id="messages"></div>
                 <form id="message-form">
                   <input type="text" id="message-input" placeholder="Type your message...">
                   <button type="submit">Send</button>
-                  <button id="cancel">Chat finish</button>
+                  <!-- <button id="cancel">Chat finish</button> -->
 
                 </form>
               </div>

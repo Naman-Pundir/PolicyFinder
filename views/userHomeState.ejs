@@ -9,6 +9,26 @@
         <script src="../static/scripts/navbar.js" defer></script>
         <title>Grievance Portal</title>
         <script src="../static/scripts/home.js" defer></script>
+        <script>
+            var arr = <%- JSON.stringify(result2) %>;
+                function showPopup(row){
+                    var name = document.getElementById("name");
+                    var desc = document.getElementById("desc");
+                    var link = document.getElementById("link");
+                    var id = row.id;
+                    name.innerHTML = arr[id].policy_name;
+                    desc.innerHTML = arr[id].details;
+                    link.href = arr[id].policy_link;
+                    var popup = document.getElementsByClassName("popup")[0];
+                    popup.classList.add('active');
+                    //showPopup();
+                }
+
+                function closePopup(){
+                    var popup = document.getElementsByClassName("popup")[0];
+                    popup.classList.remove('active');
+                }
+        </script>
     </head>
 
     <body>
@@ -42,6 +62,7 @@
                 <a href="userHomeState"><div class="box3">State Policies</div></a>
             </div>
             <div class="container">
+                <button id="chatbot-button">Help</button>
                 <!-- <div class="title1">Enter Details</div>
                 <form action="#">
                     <div class="input-box">
@@ -82,6 +103,27 @@
                     </div>
                 </form> -->
             </div>
+            <div id="chat" class="chatbot_window">
+                <div class="blocker2" id="cancel"></div>
+                <div id="messages"></div>
+                <form id="message-form">
+                  <input type="text" id="message-input" placeholder="Type your message...">
+                  <button type="submit">Send</button>
+                  <!-- <button id="cancel">Chat finish</button> -->
+
+                </form>
+              </div>
+              <script src="../static/scripts/script.js"></script>
+
+              <div class="popup">
+                <div class="blocker" onclick="closePopup()"></div>
+                <div class="popup_contents">
+                    <H1 id="name">Policy Name</H1>
+                    <p id="desc">Policy Description</p>
+                    <a id="link"><button type="button" class="learnMore" onclick="clicked()">Visit</button></a>
+                </div>
+            </div>
+
             <div class="col3">
                 <h4>RESULTS</h4>
                 <div class="content">
@@ -121,7 +163,7 @@
                         &&  (result2[i].caste == "none" ||(checkCaste(result[0].caste)))
                         &&  (result2[i].age == "none" || ((i2[0] <= result[0].age) && (i2[1] >= result[0].age)))
                         &&  result2[i].state == result[0].state){ %>
-                            <div class="data">
+                            <div class="data" id="<%= i%>">
                                 <div class="space2"></div>
                                 <p id="PolicyName"><%= result2[i].policy_name %></p>
                                 <div class="space">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div><div class="space"></div>
@@ -129,7 +171,7 @@
                                 <div class="bigspace2"></div>
                                 <p id="policyCategory"><%= result2[i].policy_category %></p>
                                 <div class="bigspace"></div><div class="space"></div>
-                                <a href = "<%= result2[i].policy_link%>"><img src="../static/images/visit.png"></a>
+                                <a onclick="showPopup(this.parentNode)"><img src="../static/images/visit.png"></a>
                                 <div class="space"></div>
                             </div>                             
                         <% }
