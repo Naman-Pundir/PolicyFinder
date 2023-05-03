@@ -14,9 +14,20 @@
         event.preventDefault();
         window.location.assign("admin");
       }
+
+      var er =
+   showAlert = function(err) {
+  alert('error: ' + err);
+}
+   if(er==false) 
+{  
+  showAlert("your credential is wrong");
+}
+
     </script>
   </head>
   <body>
+     <%=x%>
     <img src="../static/images/bgvector1.png" id="bgimg">
     <nav class="navbar">
       <div class="logo">

@@ -50,8 +50,8 @@ var last_date;
 var con = mysql.createConnection({
     host : "localhost",
     user : "root",
-   password : "India@no.1",
-    database  : "policyFinder"
+   password : "tanish@0601",
+    database  : "policy"
 });
 app.use(express.json());
 app.set("view engine","ejs");
@@ -62,11 +62,11 @@ app.get("/",(req,res)=>{
 });
 
 app.get("/userLogin",(req,res)=>{
-    res.render("userLogin.ejs");
+    res.render("userLogin.ejs",{x:"true"});
 })
 
 app.get("/officerlogin",(req,res)=>{
-    res.render("officerLogin.ejs");
+    res.render("officerLogin.ejs",{x:"true"});
 })
 
 app.get("/register",(req,res)=>{
@@ -162,7 +162,7 @@ con.query("select * from person where email=(?) ",[email],function(err, result4,
 
 
 app.get("/officerlogin",(req,res)=>{
-    res.render("officerlogin.ejs");
+    res.render("officerlogin.ejs",{x:"true"});
 })
 app.get("/admin",(req,res)=>{
     con.query("SELECT * from state", function(err, result, fields){
@@ -217,7 +217,7 @@ app.post("/register",(req,res)=>{
     var caste = req.body.caste;
     var family_income = req.body.income;
     inputs(con, name, password, qualification, occupassion, ageNumber, gender, email,state,family_income,caste)
-    res.render("userlogin");
+    res.render("userlogin",{x:"true"});
  });
 
  app.post("/userlogin", (req,res)=>{
@@ -247,8 +247,7 @@ app.post("/register",(req,res)=>{
 
                 }}
                 else{
-                    
-                  res.render("userlogin");
+                  res.render("userlogin",{x : "false"});
             
             }
 
@@ -277,7 +276,7 @@ app.post("/register",(req,res)=>{
             }
             else{
                 console.log("Incorrect Password");
-                res.render("officerlogin");
+                res.render("officerlogin",{x:"false"});
             }
         }
     })

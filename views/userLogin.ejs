@@ -14,9 +14,25 @@
         event.preventDefault();
         window.location.assign("userHomeCenter.html");
       }
+
+   var er = <%=x%>
+   showAlert = function(err) {
+  alert('error: ' + err);
+}
+   if(er==false) 
+{  
+  showAlert("your credential is wrong");
+}
+
+
+
     </script>
   </head>
   <body>
+   
+
+
+
     <img src="../static/images/bgvector1.png" id="bgimg">
     <nav class="navbar">
       <div class="logo">
