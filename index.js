@@ -50,8 +50,8 @@ var last_date;
 var con = mysql.createConnection({
     host : "localhost",
     user : "root",
-   password : "tanish@0601",
-    database  : "policy"
+   password : "India@no.1",
+    database  : "policyFinder"
 });
 app.use(express.json());
 app.set("view engine","ejs");
@@ -233,22 +233,28 @@ app.post("/register",(req,res)=>{
        
         con.query("SELECT * from person where email = (?) ", [email], function(err, result, fields){
             if (err) throw err;
-             console.log(result);
+
             if(result.length>0){
              
-             if(result[0].person_password==password){
-                console.log("login_confirmed");
+         if(result[0].person_password==password)
+         {
+            console.log("login_confirmed");
             cloneuser=result;
- con.query("SELECT * from center_policy", function(err, result2, fields){
-            if(err) throw err;
-            console.log(result2);
-            res.render("userHomeCenter",{result2,result});
-        })
+               con.query("SELECT * from center_policy", function(err, result2, fields){
+                if(err) throw err;
+                console.log(result2);
+                res.render("userHomeCenter",{result2,result});
+                     })
 
-                }}
-                else{
-                  res.render("userlogin",{x : "false"});
+        }
+         else{
+                    res.render("userlogin",{x : "false"});
+              
+              }
             
+            }
+        else{
+              res.render("userlogin",{x : "false"});
             }
 
         })
@@ -268,12 +274,21 @@ app.post("/register",(req,res)=>{
         else{
             console.log(result2);
             var temp = result2[0].pass;
+            if(result2.length>0){
+
             if(passwd==temp){
                 con.query("SELECT* from state", function(err,result,fields){
                     res.render("admin",{result});
                 })
                 
             }
+            else{
+                console.log("Incorrect Password");
+                res.render("officerlogin",{x:"false"});
+            }
+
+        }
+
             else{
                 console.log("Incorrect Password");
                 res.render("officerlogin",{x:"false"});
