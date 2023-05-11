@@ -6,9 +6,41 @@ const port =10014;
 const hbs = require("ejs")
 const alert =  require("alert");
 var dateTime = require('node-datetime');
+const WebSocket = require('ws');
+
 
   
 const encoding = ["Under-Graduate","Graduate","Post-Graduate","Doctrate"];
+const { NlpManager } = require('node-nlp');
+const manager = new NlpManager({ languages: ['en'] });
+manager.load();
+const server = new WebSocket.Server({ port: 8080 });
+server.on('connection', (socket) => {
+    console.log('Client connected');
+  
+    socket.on('message', async (message) => {
+      console.log(`Received message: ${message}`);
+  
+      // Use the NlpManager to process the message
+      console.log(`${message}`.length);
+      var msg = JSON.stringify(message);
+      console.log(typeof(msg));
+      console.log(msg.length);
+  
+      const respo =  await manager.process("en","bye");
+      console.log(respo.answer);
+      const response = await manager.process("en",`${message}`);
+  
+      // Send the response back to the client
+      socket.send(response.answer);
+    });
+  
+    socket.on('close', () => {
+      console.log('Client disconnected');
+    });
+  });
+  
+
 
 // const popup = require('popups');
 const inputs = require('./user')
@@ -20,9 +52,9 @@ var email;
 var last_date;
 var con = mysql.createConnection({
     host : "localhost",
-    user : "dbms14",
-   password : "dbms@14",
-    database  : "dbms14"
+    user : "root",
+   password : "tanish@0601",
+    database  : "policy"
 });
 app.use(express.json());
 app.set("view engine","ejs");
