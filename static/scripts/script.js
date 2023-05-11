@@ -1,7 +1,9 @@
+  const chat= document.getElementById('chat');
 
 const chatbotButton = document.getElementById('chatbot-button');
 chatbotButton.addEventListener('click', () => {
   console.log("yes chat is open");
+
   chat.style.display = 'block';
   // Add code to initialize your chatbot inside the chatbotWindow
 });

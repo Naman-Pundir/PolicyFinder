@@ -27,11 +27,13 @@ server.on('connection', (socket) => {
       console.log(typeof(msg));
       console.log(msg.length);
   
-      const respo =  await manager.process("en","bye");
-      console.log(respo.answer);
       const response = await manager.process("en",`${message}`);
-  
-      // Send the response back to the client
+
+         console.log(response.answers.length);
+         if(response.answers.length<=0){
+            socket.send("Sorry! we are unable to process this request at current moment.Please contact at Policyfinder2@gmail.com");
+           }
+      else
       socket.send(response.answer);
     });
   
