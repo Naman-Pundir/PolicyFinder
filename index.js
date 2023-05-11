@@ -9,7 +9,7 @@ var dateTime = require('node-datetime');
 
   
 const encoding = ["Under-Graduate","Graduate","Post-Graduate","Doctrate"];
-const occupation = ["farmer","student","teacher","lawyer","self-employed","government_official"];
+const occupation = ["none","farmer","student","teacher","lawyer","self-employed","government_official"];
 const categories = ["finance", "education", "housing", "health", "hygien", "agriculture"];
 
 // const popup = require('popups');
