@@ -2,40 +2,11 @@ var mysql = require("mysql2")
 const express = require("express");
 const path = require("path");
 const app = express();
-const port =4000;
+const port =10014;
 const hbs = require("ejs")
 const alert =  require("alert");
 var dateTime = require('node-datetime');
-const WebSocket = require('ws');
-const { NlpManager } = require('node-nlp');
-const manager = new NlpManager({ languages: ['en'] });
-manager.load();
-const server = new WebSocket.Server({ port: 8080 });
-server.on('connection', (socket) => {
-    console.log('Client connected');
-  
-    socket.on('message', async (message) => {
-      console.log(`Received message: ${message}`);
-  
-      // Use the NlpManager to process the message
-      console.log(`${message}`.length);
-      var msg = JSON.stringify(message);
-      console.log(typeof(msg));
-      console.log(msg.length);
-  
-      const respo =  await manager.process("en","bye");
-      console.log(respo.answer);
-      const response = await manager.process("en",`${message}`);
-  
-      // Send the response back to the client
-      console.log(response.answer);
-      socket.send(response.answer);
-    });
-  
-    socket.on('close', () => {
-      console.log('Client disconnected');
-    });
-  });
+
   
 const encoding = ["Under-Graduate","Graduate","Post-Graduate","Doctrate"];
 
@@ -49,9 +20,9 @@ var email;
 var last_date;
 var con = mysql.createConnection({
     host : "localhost",
-    user : "root",
-   password : "India@no.1",
-    database  : "policyFinder"
+    user : "dbms14",
+   password : "dbms@14",
+    database  : "dbms14"
 });
 app.use(express.json());
 app.set("view engine","ejs");
@@ -316,8 +287,8 @@ app.post("/register",(req,res)=>{
 var formatted = dt.format('Y-m-d H:M:S');
 
     if(region==="Center"){
-        var policy_id = Math.random()*10000;
-        var p_id = policy_id.toString();
+        var policy_id_temp= Math.random(6)*10000;
+        var policy_id=Math.round(policy_id_temp);
         con.connect(function(err){
             if(err){
                 console.log("PROBLEM");
@@ -331,13 +302,14 @@ var formatted = dt.format('Y-m-d H:M:S');
 
     }
     else{
-        var policy_id = Math.random(6)*1000000;
+        var policy_id_temp= Math.random(6)*10000;
+        var policy_id=Math.round(policy_id_temp);
         con.connect(function(err){
             if(err){
                 console.log("PROBLEM");
                 throw err;
             }
-            con.query("insert into center_policy (state_policy_id,policy_name,policy_category,state,caste,age,income,occupation,qualification,gender,date_added,details,policy_link) values (?,?,?,?,?,?,?,?,?,?,?,?,?) ",[policy_id,name,policy_category,state,caste,ageNumber,family_income,occupassion,qualification,gender,formatted,details,link],function(err, result, fields){
+            con.query("insert into state_policy (state_policy_id,policy_name,policy_category,state,caste,age,income,occupation,qualification,gender,date_added,details,policy_link) values (?,?,?,?,?,?,?,?,?,?,?,?,?) ",[policy_id,name,policy_category,state,caste,ageNumber,family_income,occupassion,qualification,gender,formatted,details,link],function(err, result, fields){
                 if(err) throw err;
                 
             })
@@ -345,7 +317,10 @@ var formatted = dt.format('Y-m-d H:M:S');
 
 
     }
-    res.render("admin");
+    con.query("SELECT * from state", function(err, result, fields){
+        if(err) throw err;
+        res.render("admin.ejs",{result});
+    })
  })
 
  

@@ -60,7 +60,7 @@
                             <h4>State</h4>
                             <select name="state">
                                 <% for(var i = 0; i<result.length; i++){ %>
-                                  <option value="result[i].state"><%= result[i].state %></option>
+                                  <option value="<%= result[i].state %>"><%= result[i].state %></option>
                                 <% } %>
                               </select>
                             <div class="space"></div>
