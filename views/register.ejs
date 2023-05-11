@@ -76,7 +76,12 @@
           <input type="password" name="confirmPassword" placeholder="Retype Password" onchange="checkPassword()" required>
           <div class="space"></div>
           <h4>Occupation</h4>
-          <input type="text" name="occupation" placeholder="Enter Your Occupation" required>
+          <!-- <input type="text" name="occupation" placeholder="Enter Your Occupation" required> -->
+          <select name="occupation">
+            <% for(var i = 0; i<6; i++){ %>
+                <option value="<%= occupation[i] %>"><%= occupation[i] %></option>
+            <% } %>
+          </select>
           <div class="space"></div>
           <h4>Qualification</h4>
           <select name="qualification">
