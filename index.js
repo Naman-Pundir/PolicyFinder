@@ -41,6 +41,8 @@ server.on('connection', (socket) => {
   });
   
 
+const occupation = ["none","farmer","student","teacher","lawyer","self-employed","government_official"];
+const categories = ["finance", "education", "housing", "health", "hygien", "agriculture"];
 
 // const popup = require('popups');
 const inputs = require('./user')
@@ -74,7 +76,7 @@ app.get("/officerlogin",(req,res)=>{
 
 app.get("/register",(req,res)=>{
     con.query("SELECT * from state", function(err, result, fields){
-        res.render("register.ejs",{result});
+        res.render("register.ejs",{result, occupation});
     })
     
 })
@@ -170,7 +172,7 @@ app.get("/officerlogin",(req,res)=>{
 app.get("/admin",(req,res)=>{
     con.query("SELECT * from state", function(err, result, fields){
         if(err) throw err;
-        res.render("admin.ejs",{result});
+        res.render("admin.ejs",{result,occupation,categories});
     })
 })
 
@@ -220,7 +222,7 @@ app.post("/register",(req,res)=>{
     var caste = req.body.caste;
     var family_income = req.body.income;
     inputs(con, name, password, qualification, occupassion, ageNumber, gender, email,state,family_income,caste)
-    res.render("userlogin",{x:"true"});
+    res.render("userLogin",{x:"true"});
  });
 
  app.post("/userlogin", (req,res)=>{
@@ -251,13 +253,13 @@ app.post("/register",(req,res)=>{
 
         }
          else{
-                    res.render("userlogin",{x : "false"});
+                    res.render("userLogin",{x : "false"});
               
               }
             
             }
         else{
-              res.render("userlogin",{x : "false"});
+              res.render("userLogin",{x : "false"});
             }
 
         })
@@ -281,7 +283,7 @@ app.post("/register",(req,res)=>{
 
             if(passwd==temp){
                 con.query("SELECT* from state", function(err,result,fields){
-                    res.render("admin",{result});
+                    res.render("admin.ejs",{result,occupation,categories});
                 })
                 
             }
@@ -351,7 +353,7 @@ var formatted = dt.format('Y-m-d H:M:S');
     }
     con.query("SELECT * from state", function(err, result, fields){
         if(err) throw err;
-        res.render("admin.ejs",{result});
+        res.render("admin.ejs",{result,occupation,categories});
     })
  })
 

@@ -82,7 +82,7 @@ body{
     z-index: 0;
   }
   
-  .container .title1{
+  .title1{
     color: #0E4A67;
     font-family: SSBold;
     font-size: 60px;
@@ -91,7 +91,7 @@ body{
     position: relative;
   }
   
-  .container .title1:before{
+  .title1:before{
     content: '';
     position: absolute;
     height: 10px;
@@ -102,7 +102,7 @@ body{
     background-image: linear-gradient(to right, #FB724B,#FE904B);
   }
   
-  .container .title{
+  .title{
       color: #0E4A67;
       font-family: SSBold;
       font-size: 30px;
@@ -111,7 +111,7 @@ body{
       position: relative;
   }
   
-  .container .title:before{
+  .title:before{
       content: '';
     position: absolute;
     height: 4px;

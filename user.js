@@ -6,6 +6,8 @@ const port =4000;
 const hbs = require("ejs")
 const alert =  require("alert");
 
+const occupation = ["farmer","student","teacher","lawyer","self-employed","government_official"];
+
    
       
 // var dateTime = require('node-datetime');

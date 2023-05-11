@@ -35,8 +35,9 @@
                 <div class="top">
                     <div class="box1">
                         <H1>Instructions for adding policy:</H1>
-                        <p>In form while giving input for age/income do it in LOWER_BOUND + '-' + UPPER_BOUND <br></p>
+                        <p>In form while giving input for age/income/qualification do it in LOWER_BOUND + '-' + UPPER_BOUND <br></p>
                         <p>In form while giving input for caste use lowercase letter and if applicable for more than 1 caste separate them with forward slashes. eq.(sc/st/obc/gen)</p>
+                        <p>The qualification encoding lies from 1 to 16</p>
                         <br><br>
                     </div>
                 </div>
@@ -68,7 +69,11 @@
                             <input type="text" name="income" placeholder="Enter yearly income" required>
                             <div class="space"></div>
                             <h4>Occupation</h4>
-                            <input type="text" name="occupation" placeholder="Enter occupation" required>
+                            <select name="occupation">
+                                <% for(var i = 0; i<6; i++){ %>
+                                    <option value="<%= occupation[i] %>"><%= occupation[i] %></option>
+                                <% } %>
+                              </select>
                             <div class="space"></div>
                             <h4>Details</h4>
                             <input type="text" name="details" placeholder="Enter policy details" required>
@@ -98,7 +103,11 @@
                             </div>  
                             <div class="space"></div>
                             <h4>Policy Category</h4>
-                            <input type="text" name="policy_category" placeholder="Enter Policy Category" required>
+                            <select name="policy_category">
+                                <% for(var i = 0; i<6; i++){ %>
+                                    <option value="<%= categories[i] %>"><%= categories[i] %></option>
+                                <% } %>
+                            </select>
                             <div class="space"></div>
                             <h4>Qualification</h4>
                             <input type="text" name="qualification" placeholder="Enter policy qualification" required>

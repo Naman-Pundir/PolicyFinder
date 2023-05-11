@@ -31,7 +31,42 @@
             </div>
         </nav>
         <div class="row">
-            <% for(var i = 0; i<result.length; i++){
+
+            <% 
+                        for(var i = 0; i<result.length; i++){
+
+                            var i1 = result[i].income.split("-");
+                            var i2 = result[i].age.split("-");
+                            var i3 = result[i].qualification.split("-");
+                            var i4 = result[i].caste.split("/");
+                            function checkCaste(a){
+                                for(var i = 0; i<i4.length; i++){
+                                    if(i4[i] == "none"){
+                                        continue;
+                                    }else if(i4[i] == a){
+                                        return true;
+                                    }
+                                }
+                                return false;
+                            }
+
+                        if((result[i].income == "none" || ((i1[0] <= result4[0].income) && (i1[1] >= result4[0].income)))
+                        &&  (result[i].occupation =="none" || result[i].occupation === result4[0].occupation)
+                        &&  (result[i].qualification == "none" || ((i3[0]<= result4[0].qualification) && (i3[1] >= result4[0].qualification)))
+                        &&  (result[i].gender == "none" || result[i].gender === result4[0].gender)
+                        &&  (result[i].caste == "none" ||(checkCaste(result4[0].caste)))
+                        &&  (result[i].age == "none" || ((i2[0] <= result4[0].age) && (i2[1] >= result4[0].age)))
+                        &&  (result[i].date_added > result4[0].last_active)){ %>
+                            <div class="col1">
+                                <H1>A new policy have arrived for you.</H1>
+                                <p><%= result[i].policy_name %> <br></p><p><%= result[i].details%></p>
+                                <a href="<%= result[i].policy_link%>"><button type="button" class="learnMore">Visit</button></a>
+                            </div>                            
+                        <% }
+                    } %> 
+
+
+            <!-- <% for(var i = 0; i<result.length; i++){
                 if(result[i].date_added > result4[0].last_active){%>
                         <div class="col1">
                         <H1>A new policy have arrived for you.</H1>
@@ -39,8 +74,43 @@
                         <a href="<%= result[i].policy_link%>"><button type="button" class="learnMore">Visit</button></a>
                         </div>
                 <% }
-            }%>
-            <% for(var i = 0; i<result2.length; i++){
+            }%> -->
+
+            <% 
+                        for(var i = 0; i<result2.length; i++){
+
+                            var i1 = result2[i].income.split("-");
+                            var i2 = result2[i].age.split("-");
+                            var i3 = result2[i].qualification.split("-");
+                            var i4 = result2[i].caste.split("/");
+                            function checkCaste(a){
+                                for(var i = 0; i<i4.length; i++){
+                                    if(i4[i] == "none"){
+                                        continue;
+                                    }else if(i4[i] == a){
+                                        return true;
+                                    }
+                                }
+                                return false;
+                            }
+
+                        if((result2[i].income == "none" || ((i1[0] <= result4[0].income) && (i1[1] >= result4[0].income)))
+                        &&  (result2[i].occupation =="none" || result2[i].occupation === result4[0].occupation)
+                        &&  (result2[i].qualification == "none" || ((i3[0]<= result4[0].qualification) && (i3[1] >= result4[0].qualification)))
+                        &&  (result2[i].gender == "none" || result2[i].gender === result4[0].gender)
+                        &&  (result2[i].caste == "none" ||(checkCaste(result4[0].caste)))
+                        &&  (result2[i].age == "none" || ((i2[0] <= result4[0].age) && (i2[1] >= result4[0].age)))
+                        &&  result2[i].state == result4[0].state
+                        &&  result2[i].date_added > result4[0].last_active){ %>
+                            <div class="col1">
+                                <H1>A new policy have arrived for you.</H1>
+                                <p><%= result2[i].policy_name %> <br></p><p><%= result2[i].details%></p>
+                                <a href="<%= result2[i].policy_link%>"><button type="button" class="learnMore">Visit</button></a>
+                            </div>                            
+                        <% }
+                    } %>
+
+            <!-- <% for(var i = 0; i<result2.length; i++){
                 if(result2[i].date_added > result4[0].last_active){%>
                         <div class="col1">
                         <H1>A new policy have arrived for you.</H1>
@@ -48,7 +118,7 @@
                         <a href="<%= result2[i].policy_link%>"><button type="button" class="learnMore">Visit</button></a>
                         </div>
                 <% }
-            }%>
+            }%> -->
             
         </div>
     </body>
